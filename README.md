@@ -1,4 +1,4 @@
-# Getting started with vim
+# Getting started with Vim
 
 ## 1. Opening and Exiting Vim
 
