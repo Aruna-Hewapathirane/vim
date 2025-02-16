@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Vim Tutorial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 20px;
+            padding: 20px;
+        }
+        h1, h2, h3 {
+            color: #222;
+        }
+        code {
+            background: #222;
+            color: #0f0;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        pre {
+            background: #222;
+            color: #0f0;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>Basic Vim Tutorial</h1>
+    <h2>1. Opening and Exiting Vim</h2>
+    <p>To start Vim and open a file:</p>
+    <pre><code>vim filename</code></pre>
+    <p>To exit Vim:</p>
+    <pre><code>:q   (Quit if no changes were made)
+:q!  (Quit without saving)
+:wq  (Save and quit)
+:x   (Save only if changes were made, then quit)</code></pre>
+    
+    <h2>2. Vim Modes</h2>
+    <p>Vim has three main modes:</p>
+    <ul>
+        <li><strong>Normal Mode</strong> - Default mode for navigation and commands.</li>
+        <li><strong>Insert Mode</strong> - Used for typing text (<code>i</code> to enter, <code>Esc</code> to exit).</li>
+        <li><strong>Visual Mode</strong> - Used for selecting text (<code>v</code> for characters, <code>V</code> for lines).</li>
+    </ul>
+    
+    <h2>3. Moving the Cursor</h2>
+    <p>Use these keys for navigation:</p>
+    <pre><code>h - Move left
+l - Move right
+j - Move down
+k - Move up</code></pre>
+    <p>Other useful commands:</p>
+    <pre><code>w  (Jump forward by one word)
+b  (Jump backward by one word)
+0  (Move to beginning of the line)
+$  (Move to end of the line)
+G  (Move to end of the file)
+gg (Move to beginning of the file)</code></pre>
+    
+    <h2>4. Editing Text</h2>
+    <p>Entering Insert Mode:</p>
+    <pre><code>i  (Insert before cursor)
+I  (Insert at the beginning of the line)
+a  (Append after cursor)
+A  (Append at the end of the line)</code></pre>
+    
+    <h2>5. Deleting Text</h2>
+    <pre><code>x   (Delete character under cursor)
+dd  (Delete current line)
+dw  (Delete a word)
+d$  (Delete to end of line)</code></pre>
+    
+    <h2>6. Copying and Pasting</h2>
+    <pre><code>yy  (Copy current line)
+p   (Paste after cursor)
+P   (Paste before cursor)</code></pre>
+    
+    <h2>7. Undo and Redo</h2>
+    <pre><code>u       (Undo last change)
+Ctrl+r  (Redo last undone change)</code></pre>
+    
+    <h2>8. Searching and Replacing</h2>
+    <pre><code>/word   (Search forward for 'word')
+?word   (Search backward for 'word')
+n       (Repeat last search forward)
+N       (Repeat last search backward)</code></pre>
+    <p>Replace all occurrences of 'old' with 'new':</p>
+    <pre><code>:%s/old/new/g</code></pre>
+    
+    <h2>9. Splitting Windows</h2>
+    <pre><code>:split filename   (Horizontal split)
+:vsplit filename  (Vertical split)
+Ctrl-w w         (Switch between windows)</code></pre>
+    
+    <h2>10. Running Shell Commands</h2>
+    <pre><code>:!ls     (Run a shell command)
+:r !date (Insert the output of a command)</code></pre>
+    
+    <h2>11. Recording Macros</h2>
+    <p>To record a macro into register 'a':</p>
+    <pre><code>qa  (Start recording)
+[Perform actions]
+q   (Stop recording)</code></pre>
+    <p>To replay the macro:</p>
+    <pre><code>@a  (Play macro 'a')
+@@  (Repeat last macro)</code></pre>
+    
+    <h2>12. Spell Checking</h2>
+    <pre><code>:set spell     (Enable spell checking)
+:set nospell  (Disable spell checking)</code></pre>
+    
+    <h2>13. Viewing Text as Hex</h2>
+    <pre><code>:%!xxd   (View file in hex mode)
+:%!xxd -r (Convert back to text)</code></pre>
+    
+    <h2>14. Basic Vim Configuration (`.vimrc`)</h2>
+    <p>Example <code>.vimrc</code> configuration:</p>
+    <pre><code>set number       " Show line numbers
+set tabstop=4    " Set tab width to 4 spaces
+set shiftwidth=4 " Auto-indent width
+set expandtab    " Use spaces instead of tabs
+syntax enable    " Enable syntax highlighting</code></pre>
+    
+    <h2>Conclusion</h2>
+    <p>Vim is a powerful editor that rewards practice and learning. For more help, type:</p>
+    <pre><code>:help</code></pre>
+    <p>or visit <a href="https://www.vim.org/">Vim's official website</a>.</p>
+</body>
+</html>
