@@ -1,153 +1,170 @@
 # vim
-Getting Started with Vim
+# Basic Vim Tutorial
 
-Once Vim is installed, you can start it by typing the following command in your terminal:
+## 1. Opening and Exiting Vim
 
-vim
+To start Vim and open a file:
 
-You will enter Normal mode (the default mode), where you can navigate, edit, and manipulate your files.
-Vim Modes
+```sh
+vim filename
+```
 
-Vim operates in several modes:
+To exit Vim:
 
-    Normal Mode: This is the default mode for navigation and manipulation of text. You can press Esc to return to Normal mode.
-    Insert Mode: This mode allows you to insert text. You can enter Insert mode by pressing i, I, a, or A.
-    Visual Mode: This mode is used for selecting text. Press v to enter Visual mode, and use y to yank (copy) or d to delete the selection.
-    Command Mode: Use this mode for executing commands like saving, quitting, or searching. Enter Command mode by pressing :.
+```sh
+:q   # Quit if no changes were made
+:q!  # Quit without saving
+:wq  # Save and quit
+:x   # Save only if changes were made, then quit
+```
 
-Basic Commands
+## 2. Vim Modes
 
-    Open a file:
+Vim has three main modes:
 
-    vim filename
+- **Normal Mode** - Default mode for navigation and commands.
+- **Insert Mode** - Used for typing text (`i` to enter, `Esc` to exit).
+- **Visual Mode** - Used for selecting text (`v` for characters, `V` for lines).
 
-    Exit Vim:
-        To exit without saving:
-        :q!
-        To save and exit:
-        :wq
-        To save the file:
-        :w
-        To quit Vim (if no changes have been made):
-        :q
+## 3. Moving the Cursor
 
-Editing and Navigation
-Moving the Cursor:
+Use these keys for navigation:
 
-    h: Move left
-    j: Move down
-    k: Move up
-    l: Move right
+```sh
+h - Move left
+l - Move right
+j - Move down
+k - Move up
+```
 
-Inserting Text:
+Other useful commands:
 
-    Press i to enter Insert mode before the cursor.
-    Press a to enter Insert mode after the cursor.
-    Press o to open a new line below the current line.
-    Press O to open a new line above the current line.
+```sh
+w  # Jump forward by one word
+b  # Jump backward by one word
+0  # Move to beginning of the line
+$  # Move to end of the line
+G  # Move to end of the file
+gg # Move to beginning of the file
+```
 
-Deleting Text:
+## 4. Editing Text
 
-    d: Delete a character (place the cursor over it and press d).
-    dd: Delete the entire line.
-    d$: Delete from the cursor to the end of the line.
-    d0: Delete from the cursor to the beginning of the line.
+Entering Insert Mode:
 
-Copying and Pasting Text:
+```sh
+i  # Insert before cursor
+I  # Insert at the beginning of the line
+a  # Append after cursor
+A  # Append at the end of the line
+```
 
-    yy: Yank (copy) the current line.
-    y$: Yank from the cursor to the end of the line.
-    p: Paste below the current line.
-    P: Paste above the current line.
+## 5. Deleting Text
 
-Searching and Replacing
+```sh
+x   # Delete character under cursor
+dd  # Delete current line
+dw  # Delete a word
+d$  # Delete to end of line
+```
 
-    Search for a word:
-    Press / and then type the word you want to search for. Press Enter to find the first occurrence.
+## 6. Copying and Pasting
 
-    Search and replace:
-    To replace all instances of a word in a file:
+```sh
+yy  # Copy current line
+p   # Paste after cursor
+P   # Paste before cursor
+```
 
-    :%s/old_word/new_word/g
+## 7. Undo and Redo
 
-    Search backwards:
-    Press ? and then type the word you want to search for.
+```sh
+u       # Undo last change
+Ctrl+r  # Redo last undone change
+```
 
-Vim Configuration (.vimrc)
+## 8. Searching and Replacing
 
-Your Vim configuration file is named .vimrc and is typically located in your home directory. This file allows you to customize Vim's behavior and appearance.
-Example .vimrc:
+```sh
+/word   # Search forward for 'word'
+?word   # Search backward for 'word'
+n       # Repeat last search forward
+N       # Repeat last search backward
+```
 
-" Enable line numbers
-set number
+Replace all occurrences of 'old' with 'new':
 
-" Enable syntax highlighting
-syntax enable
+```sh
+:%s/old/new/g
+```
 
-" Set the background color
-set background=dark
+## 9. Splitting Windows
 
-" Enable auto-indentation
-set smartindent
-set tabstop=4
-set shiftwidth=4
+```sh
+:split filename   # Horizontal split
+:vsplit filename  # Vertical split
+Ctrl-w w         # Switch between windows
+```
 
-" Enable line wrapping
-set wrap
+## 10. Running Shell Commands
 
-" Show line and column number in the status line
-set ruler
+```sh
+:!ls     # Run a shell command
+:r !date # Insert the output of a command
+```
 
-" Enable search highlighting
-set hlsearch
+## 11. Recording Macros
 
-Using Plugins with Vim
+To record a macro into register 'a':
 
-Vim's functionality can be extended with plugins. The most common plugin manager is vim-plug.
-Installing vim-plug:
+```sh
+qa  # Start recording
+[Perform actions]
+q   # Stop recording
+```
 
-    Open a terminal and run the following command:
+To replay the macro:
 
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```sh
+@a  # Play macro 'a'
+@@  # Repeat last macro
+```
 
-Add the following lines to your .vimrc file:
+## 12. Spell Checking
 
-call plug#begin('~/.vim/plugged')
+```sh
+:set spell     # Enable spell checking
+:set nospell  # Disable spell checking
+```
 
-" Example plugins
-Plug 'tpope/vim-fugitive'  " Git integration
-Plug 'junegunn/fzf.vim'    " Fuzzy file search
+## 13. Viewing Text as Hex
 
-call plug#end()
+```sh
+:%!xxd   # View file in hex mode
+:%!xxd -r # Convert back to text
+```
 
-To install the plugins, open Vim and run:
+## 14. Basic Vim Configuration (`.vimrc`)
 
-    :PlugInstall
+Example `.vimrc` configuration:
 
-Advanced Tips and Tricks
-Use Macros to Automate Tasks:
+```sh
+set number       " Show line numbers
+set tabstop=4    " Set tab width to 4 spaces
+set shiftwidth=4 " Auto-indent width
+set expandtab    " Use spaces instead of tabs
+syntax enable    " Enable syntax highlighting
+```
 
-You can record sequences of commands and play them back to automate repetitive tasks. For example, press q followed by a register key (like a) to start recording a macro, then perform the actions you want to automate. Press q again to stop recording. Replay the macro by pressing @a.
-Split Windows:
+## Conclusion
 
-Vim allows you to split the window for editing multiple files side-by-side:
+Vim is a powerful editor that rewards practice and learning. For more help, type:
 
-    Horizontal split:
+```sh
+:help
+```
 
-:split filename
-
-Vertical split:
-
-    :vsplit filename
-
-You can switch between splits using Ctrl-w followed by the direction (h, j, k, l).
-Useful Resources
-
-    Vim Documentation
-    Vim Cheat Sheet
-    Vim Adventures (Interactive Learning)
-    Vim Wiki
+or visit [Vim's official website](https://www.vim.org/).
 
 Happy Vimming! 🎉
 
